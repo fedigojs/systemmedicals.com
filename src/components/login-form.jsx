@@ -5,25 +5,19 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { supabase } from "@/lib/supabaseClient"
-import { LoginForm } from "@/components/login-form"
 
-export default function LoginPage() {
-  return (
-      <div
-          className="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
-        <div className="w-full max-w-sm">
-          <LoginForm />
-        </div>
-      </div>
-  );
-}
 
 export function LoginForm({
   className,
   ...props
 }) {
   const handleSignIn = async () => {
-    await supabase.auth.signInWithOAuth({ provider: 'google' })
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/admin`
+      }
+    })
   }
 
   return (

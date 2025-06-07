@@ -10,8 +10,43 @@ import {
     BreadcrumbList, BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
+import {useEffect, useState} from "react"
+import {useRouter} from "next/navigation"
+import {supabase} from "@/lib/supabaseClient"
 
 export default function AdminLayout({children}) {
+    const [loading, setLoading] = useState(true)
+    const [user, setUser] = useState(null)
+    const router = useRouter()
+
+    useEffect(() => {
+        supabase.auth.getUser().then(async ({ data }) => {
+            const currentUser = data.user
+            setUser(currentUser)
+            if (currentUser) {
+                // Check if this user is in admin_users table
+                const { data: adminUser } = await supabase
+                    .from('admin_users')
+                    .select('*')
+                    .eq('email', currentUser.email)
+                    .single()
+                if (adminUser) {
+                    setIsAdmin(true)
+                } else {
+                    setIsAdmin(false)
+                    router.replace("/login")
+                }
+            } else {
+                setIsAdmin(false)
+                router.replace("/login")
+            }
+            setLoading(false)
+        })
+    }, [])
+
+    if (loading) return <div>Loading...</div>
+    if (!user) return null
+
     return (
         <SidebarProvider>
             <AppSidebar/>
