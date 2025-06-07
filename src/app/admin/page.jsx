@@ -1,7 +1,8 @@
+import AdminAuthGuard from "@/components/admin-auth-guard";
 
 export default function Page() {
     return (
-        <>
+        <AdminAuthGuard>
             <div className="flex flex-1 flex-col gap-4 p-4">
                 <div className="grid auto-rows-min gap-4 md:grid-cols-3">
                     <div className="bg-muted/50 aspect-video rounded-xl"/>
@@ -10,6 +11,6 @@ export default function Page() {
                 </div>
                 <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min"/>
             </div>
-        </>
+        < /AdminAuthGuard>
     );
 }
