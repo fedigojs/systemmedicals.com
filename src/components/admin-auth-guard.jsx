@@ -3,6 +3,7 @@
 import {useEffect, useState} from "react"
 import {useRouter} from "next/navigation"
 import {supabase} from "@/lib/supabaseClient"
+import {LoadingSpinner} from "@/components/loading-spiner";
 
 export default function AdminAuthGuard({children}) {
     const [loading, setLoading] = useState(true)
@@ -12,7 +13,6 @@ export default function AdminAuthGuard({children}) {
 
     useEffect(() => {
         supabase.auth.getUser().then(async ({ data }) => {
-            console.log("User from Supabase:", data.user)
             const currentUser = data.user
             setUser(currentUser)
             if (currentUser) {
@@ -36,7 +36,11 @@ export default function AdminAuthGuard({children}) {
         })
     }, [])
 
-    if (loading) return <div>Loading...</div>
+    if (loading) return (
+        <div className="fixed inset-0 flex items-center justify-center bg-white/70 z-50">
+            <LoadingSpinner className="w-12 h-12 text-gray-500 animate-spin" />
+        </div>
+    );
     if (!user || !isAdmin) return null
 
     return children;
