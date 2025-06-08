@@ -12,6 +12,7 @@ export default function AdminAuthGuard({children}) {
 
     useEffect(() => {
         supabase.auth.getUser().then(async ({ data }) => {
+            console.log("User from Supabase:", data.user)
             const currentUser = data.user
             setUser(currentUser)
             if (currentUser) {
