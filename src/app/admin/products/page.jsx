@@ -1,13 +1,25 @@
 'use client';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "@/lib/productCrud";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import {deleteProduct, getAllProducts} from "@/lib/productCrud";
 
 export default function ProductListPage() {
+    const queryClient = useQueryClient();
+
     const { data: products = [], isLoading } = useQuery({
         queryKey: ["products"],
         queryFn: getAllProducts,
+    });
+
+    const { mutate: handleDelete, isLoading: isDeleting } = useMutation({
+        mutationFn: deleteProduct,
+        onSuccess: () => {
+            queryClient.invalidateQueries(["products"]);
+        },
+        onError: (error) => {
+            alert(error.message || "Ошибка удаления");
+        },
     });
 
     return (
@@ -57,6 +69,18 @@ export default function ProductListPage() {
                                     <Link href={`/admin/products/edit/${product.id}`}>
                                         <Button size="sm" variant="secondary">Edit</Button>
                                     </Link>
+                                    <Button
+                                        size="sm"
+                                        variant="destructive"
+                                        onClick={() => {
+                                            if (window.confirm("Delete this product?")) {
+                                                handleDelete(product.id);
+                                            }
+                                        }}
+                                        disabled={isDeleting}
+                                    >
+                                        {isDeleting ? "Deleting..." : "Delete"}
+                                    </Button>
                                 </div>
                             </td>
                         </tr>
