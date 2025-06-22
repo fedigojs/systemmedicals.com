@@ -125,7 +125,7 @@ export default function ProductForm({ id }) {
     }
 
     return (
-        <div className="w-full max-w-2xl mx-auto p-8">
+        <div className="w-full max-w-6xl mx-auto p-8">
             <h1 className="text-2xl font-bold mb-4">{id ? "Edit Product" : "Create Product"}</h1>
             <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
@@ -163,11 +163,11 @@ export default function ProductForm({ id }) {
                 <div className="flex gap-4">
                     <div className="flex-1">
                         <label className="font-medium">Price</label>
-                        <Input type="number" value={price} min={0} step={0.01} onChange={e => setPrice(Number(e.target.value) || 0)} />
+                        <Input type="string" value={price} onChange={e => setPrice(Number(e.target.value) || 0)} />
                     </div>
                     <div className="flex-1">
                         <label className="font-medium">Quantity</label>
-                        <Input type="number" value={quantity} min={0} onChange={e => setQuantity(Number(e.target.value) || 0)} />
+                        <Input type="string" value={quantity}  onChange={e => setQuantity(Number(e.target.value) || 0)} />
                     </div>
                 </div>
                 <div>
