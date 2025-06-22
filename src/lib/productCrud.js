@@ -12,6 +12,16 @@ export async function getProductById(id) {
     return data;
 }
 
+export async function getProductBySlug(slug) {
+    const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .eq("slug->>en", slug)
+        .single()
+    if (error) throw error
+    return data
+}
+
 export async function createProduct(data) {
     const {data: inserted, error} = await supabase.from("products").insert([data]).select().single();
     if (error) throw error;

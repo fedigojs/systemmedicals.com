@@ -4,22 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="848a11c2-8420-4c04-ad78-27d9a663e625" name="Changes" comment="feat: add button delete product">
-      <change afterPath="$PROJECT_DIR$/src/app/category/[slug]/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/category/layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/main/layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/main/page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/product/[id]/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/product/layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/footer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/header.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/main-page-card.jsx" afterDir="false" />
+    <list default="true" id="848a11c2-8420-4c04-ad78-27d9a663e625" name="Changes" comment="feat: add header footer main page category product">
+      <change afterPath="$PROJECT_DIR$/src/app/contact/layout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/contact/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sub-category-filter.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product-form.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product-form.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/products/edit/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/products/edit/[id]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/category/[slug]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/category/[slug]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/category/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/category/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/product/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/product/[slug]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/product/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/product/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/productCrud.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/productCrud.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,18 +108,38 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750587656093</updated>
-      <workItem from="1750587657468" duration="13037000" />
+      <workItem from="1750587657468" duration="16149000" />
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: add header footer main page category product">
+      <option name="closed" value="true" />
+      <created>1750619674890</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1750619674890</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: add login google" />
     <MESSAGE value="feat: add dashboard" />
     <MESSAGE value="feat: add button delete product" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add button delete product" />
+    <MESSAGE value="feat: add header footer main page category product" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add header footer main page category product" />
   </component>
 </project>
