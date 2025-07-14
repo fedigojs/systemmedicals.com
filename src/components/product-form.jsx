@@ -22,29 +22,27 @@ const langs = ["en", "pl", "fr", "ua", "it"];
 const LANG_LABELS = {en: "English", pl: "Polski", fr: "Français", ua: "Українська", it: "Italiano"};
 
 function emptyJsonb() {
-    return langs.reduce((obj, l) => ({...obj, [l]: ""}), {});
+	return langs.reduce((obj, l) => ({ ...obj, [l]: ''}), {});
 }
 
-export default function ProductForm({id}) {
-    const router = useRouter();
-    const queryClient = useQueryClient();
-    const [images, setImages] = useState([]);
-    const [name, setName] = useState(emptyJsonb());
-    const [description, setDescription] = useState(emptyJsonb());
-    const [slug, setSlug] = useState(emptyJsonb());
-    const [seoTitle, setSeoTitle] = useState(emptyJsonb());
-    const [seoDescription, setSeoDescription] = useState(emptyJsonb());
-    const [seoKeywords, setSeoKeywords] = useState(emptyJsonb());
-    const [activeLang, setActiveLang] = useState(langs[0]);
-    const [price, setPrice] = useState(0);
-    const [quantity, setQuantity] = useState(0);
-    const [isActive, setIsActive] = useState(true);
-    const [imageFile, setImageFile] = useState(null);
-    const [imageUrl, setImageUrl] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [categoryIds, setCategoryIds] = useState([]);
+export default function ProductForm({ id }) {
+	const router = useRouter();
+	const queryClient = useQueryClient();
+	const [images, setImages] = useState([]);
+	const [name, setName] = useState(emptyJsonb());
+	const [description, setDescription] = useState(emptyJsonb());
+	const [slug, setSlug] = useState(emptyJsonb());
+	const [seoTitle, setSeoTitle] = useState(emptyJsonb());
+	const [seoDescription, setSeoDescription] = useState(emptyJsonb());
+	const [seoKeywords, setSeoKeywords] = useState(emptyJsonb());
+	const [activeLang, setActiveLang] = useState(langs[0]);
+	const [price, setPrice] = useState(0);
+	const [quantity, setQuantity] = useState(0);
+	const [isActive, setIsActive] = useState(true);
+	const [imageFile, setImageFile] = useState(null);
+	const [imageUrl, setImageUrl] = useState('');
+	const [loading, setLoading] = useState(false);const [categoryIds, setCategoryIds] = useState([]);
     const [isFeatured, setIsFeatured] = useState(false);
-
 
     // Для редактирования — загрузить продукт
     useEffect(() => {
@@ -73,71 +71,74 @@ export default function ProductForm({id}) {
         }
     }, [id]);
 
-    useEffect(() => {
-        setSlug((prev) => ({
-            ...prev,
-            [activeLang]: slugify(name[activeLang])
-        }));
-    }, [name[activeLang], activeLang]);
+	useEffect(() => {
+		setSlug((prev) => ({
+			...prev,
+			[activeLang]: slugify(name[activeLang]),
+		}));
+	}, [name[activeLang], activeLang]);
 
+	const {data: categories = []} = useQuery({
+		queryKey: ['categories'],
+		queryFn: getAllCategories,
+	});
 
-    const {data: categories = []} = useQuery({
-        queryKey: ["categories"],
-        queryFn: getAllCategories,
-    });
-
-    // добавление и редактирование
-    const mutation = useMutation({
-        mutationFn: async (data) => {
-            if (id) {
-                return await updateProduct(id, data);
-            } else {
-                return await createProduct(data);
-            }
-        },
-        onSuccess: async (product) => {
+	// добавление и редактирование
+	const mutation = useMutation({
+		mutationFn: async (data) => {
+			if (id) {
+				return await updateProduct(id, data);
+			} else {
+				return await createProduct(data);
+			}
+		},
+		onSuccess: async (product) => {
             await upsertProductCategories(product.id, categoryIds);
-            queryClient.invalidateQueries({queryKey: ["products"]});
-            router.push("/admin/products");
-        },
-        onError: (error) => {
-            alert("Ошибка сохранения: " + error.message);
-        }
-    });
+			queryClient.invalidateQueries({queryKey: ['products']});
+			router.push('/admin/products');
+		},
+		onError: (error) => {
+			alert('Ошибка сохранения: ' + error.message);
+		},
+	});
 
-    // загрузка картинки в Supabase
-    async function handleUploadImage(file) {
-        if (!file) return "";
-        const filename = `${Date.now()}_${file.name}`;
-        const {error} = await supabase.storage.from("products").upload(filename, file);
-        if (error) throw error;
-        const {data: {publicUrl}} = supabase.storage.from("products").getPublicUrl(filename);
-        return publicUrl;
-    }
+	// загрузка картинки в Supabase
+	async function handleUploadImage(file) {
+		if (!file) return '';
+		const filename = `${Date.now()}_${file.name}`;
+		const { error } = await supabase.storage
+			.from('products')
+			.upload(filename, file);
+		if (error) throw error;
+		const {
+			data: { publicUrl },
+		} = supabase.storage.from('products').getPublicUrl(filename);
+		return publicUrl;
+	}
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        setLoading(true);
-        let url = imageUrl;
-        if (imageFile) {
-            url = await handleUploadImage(imageFile);
-        }
-        mutation.mutate({
-            name,
-            description,
-            slug,
-            seo_title: seoTitle,
-            seo_description: seoDescription,
-            seo_keywords: seoKeywords,
-            price,
-            quantity,
-            images,
-            main_image_url: images[0]?.url || null,
-            is_active: isActive,
-            is_featured: isFeatured,
-        });
-        setLoading(false);
-    }
+	async function handleSubmit(e) {
+		e.preventDefault();
+		setLoading(true);
+		let url = imageUrl;
+		if (imageFile) {
+			url = await handleUploadImage(imageFile);
+		}
+		mutation.mutate({
+			name,
+			description,
+			slug,
+			seo_title: seoTitle,
+			seo_description: seoDescription,
+			seo_keywords: seoKeywords,
+			price,
+			quantity,
+
+			images,
+			main_image_url: images[0]?.url || null,
+			is_active: isActive,is_featured: isFeatured,
+		});
+		setLoading(false);
+	}
 
     return (
         <div className="w-full max-w-6xl mx-auto p-8">
