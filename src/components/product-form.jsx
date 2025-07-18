@@ -143,7 +143,11 @@ export default function ProductForm({ id }) {
                 </div>
                 <div>
                     <label className="font-medium">Description ({LANG_LABELS[activeLang]})</label>
-                    <Textarea value={description[activeLang]} onChange={e => setDescription({ ...description, [activeLang]: e.target.value })} />
+                    <RichTextEditor
+                        value={description[activeLang]}
+                        onChange={(val) => setDescription({ ...description, [activeLang]: val })}
+                        langKey={activeLang}
+                    />
                 </div>
                 <div>
                     <label className="font-medium">Slug ({LANG_LABELS[activeLang]})</label>
