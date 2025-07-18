@@ -8,7 +8,7 @@ export default function Footer() {
                 <div>
                     <h2 className="text-xl font-bold text-blue-700">SystemMedicals</h2>
                     <p className="text-sm text-muted-foreground mt-2">
-                        Quality medical electronics and devices to improve your daily life.
+                        Quality medical equipment for professionals.
                     </p>
                 </div>
 
@@ -17,7 +17,6 @@ export default function Footer() {
                     <h3 className="text-sm font-semibold mb-2">Explore</h3>
                     <ul className="space-y-1 text-sm text-gray-600">
                         <li><Link href="/" className="hover:underline">Home</Link></li>
-                        <li><Link href="/shop" className="hover:underline">Shop</Link></li>
                         <li><Link href="/about" className="hover:underline">About</Link></li>
                         <li><Link href="/contact" className="hover:underline">Contact</Link></li>
                     </ul>
@@ -29,7 +28,6 @@ export default function Footer() {
                     <ul className="space-y-1 text-sm text-gray-600">
                         <li><Link href="/privacy" className="hover:underline">Privacy Policy</Link></li>
                         <li><Link href="/terms" className="hover:underline">Terms of Service</Link></li>
-                        <li><Link href="/support" className="hover:underline">Support</Link></li>
                     </ul>
                 </div>
             </div>
