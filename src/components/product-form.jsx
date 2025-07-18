@@ -11,9 +11,10 @@ import { getAllCategories } from "@/lib/categoryCrud";
 import { slugify } from "@/lib/utils";
 import { supabase } from "@/lib/supabaseClient";
 import {ProductImagesEditor} from "@/components/product-image-editor";
+import RichTextEditor from "@/components/reach-text-editor";
 
-const langs = ["en", "pl", "fr"];
-const LANG_LABELS = { en: "English", pl: "Polski", fr: "Français" };
+const langs = ["en", "pl", "fr", "ua", "it"];
+const LANG_LABELS = { en: "English", pl: "Polski", fr: "Français", ua: "Українська", it: "Italiano" };
 
 function emptyJsonb() {
     return langs.reduce((obj, l) => ({ ...obj, [l]: "" }), {});
@@ -175,7 +176,7 @@ export default function ProductForm({ id }) {
                     <select className="border rounded px-2 py-1 w-full" value={categoryId || ""} onChange={e => setCategoryId(e.target.value || null)}>
                         <option value="">No category</option>
                         {categories.map(cat => (
-                            <option key={cat.id} value={cat.id}>{cat.name?.en || cat.name?.pl || cat.name?.fr || "No name"}</option>
+                            <option key={cat.id} value={cat.id}>{cat.name?.en || cat.name?.pl || cat.name?.fr || cat.name?.ua || cat.name?.it ||"No name"}</option>
                         ))}
                     </select>
                 </div>

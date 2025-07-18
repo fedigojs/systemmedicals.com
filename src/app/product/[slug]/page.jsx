@@ -90,7 +90,7 @@ export default function ProductPage() {
                             <CardTitle className="text-3xl font-bold mb-4">
                                 {product.name?.en || "No Name"}
                             </CardTitle>
-                            <div className="text-2xl font-bold mb-3 text-primary">{product.price} грн</div>
+                            <div className="text-2xl font-bold mb-3 text-primary">{product.price} €</div>
                             <div className="mb-4 text-muted-foreground">
                                 {typeof product.quantity === "number"
                                     ? `In stock: ${product.quantity}`

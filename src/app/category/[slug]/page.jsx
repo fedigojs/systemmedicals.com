@@ -84,7 +84,7 @@ export default function CategoryPage() {
                                 <CardContent className="p-4">
                                     <CardTitle>{product.name?.en || "No Name"}</CardTitle>
                                     <p className="text-muted-foreground mt-2">
-                                        {product.price} грн
+                                        {product.price} €
                                     </p>
                                     <Button className="mt-4 w-full">View</Button>
                                 </CardContent>
