@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import { useParams } from "next/navigation"
-import { getAllProducts } from "@/lib/productCrud"
+import { getAllProductsWithCategories } from "@/lib/productCrud"
 import { getAllCategories } from "@/lib/categoryCrud"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -16,41 +16,41 @@ export default function CategoryPage() {
     const [selectedSub, setSelectedSub] = useState(null)
 
     useEffect(() => {
-        const slug = params.slug
-
+        const slug = params.slug;
         const loadData = async () => {
             try {
-                const categories = await getAllCategories()
-                const matchedCategory = categories.find(cat => cat.slug?.en === slug)
-                setCategory(matchedCategory)
-                if (!matchedCategory) return
+                const categories = await getAllCategories();
+                const matchedCategory = categories.find(cat => cat.slug?.en === slug);
+                setCategory(matchedCategory);
+                if (!matchedCategory) return;
 
                 // Найти подкатегории
-                const subcats = categories.filter(cat => cat.parent_id === matchedCategory.id)
-                setSubcategories(subcats)
+                const subcats = categories.filter(cat => cat.parent_id === matchedCategory.id);
+                setSubcategories(subcats);
 
-                // Загрузить все товары
-                const allProducts = await getAllProducts()
+                // Загрузить все товары (c их категориями)
+                const allProducts = await getAllProductsWithCategories();
 
-                // Фильтрация по категории или подкатегории
-                let filtered
+                let filtered;
                 if (selectedSub) {
-                    filtered = allProducts.filter(product => product.category_id === selectedSub)
-                } else {
-                    const subIds = subcats.map(c => c.id)
                     filtered = allProducts.filter(product =>
-                        product.category_id === matchedCategory.id ||
-                        subIds.includes(product.category_id)
-                    )
+                        product.category_ids.includes(selectedSub)
+                    );
+                } else {
+                    const subIds = subcats.map(c => c.id);
+                    filtered = allProducts.filter(product =>
+                        product.category_ids.includes(matchedCategory.id) ||
+                        product.category_ids.some(catId => subIds.includes(catId))
+                    );
                 }
-                setProducts(filtered)
+                setProducts(filtered);
             } catch (error) {
-                console.error("Download error:", error)
+                console.error("Download error:", error);
             }
-        }
+        };
 
-        loadData()
-    }, [params.slug, selectedSub])
+        loadData();
+    }, [params.slug, selectedSub]);
 
     if (!category) {
         return (
