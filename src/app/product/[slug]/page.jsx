@@ -4,10 +4,19 @@ import { useEffect, useState } from "react"
 import { useParams } from "next/navigation"
 import { getProductBySlug } from "@/lib/productCrud"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { BadgeCheck, ShieldCheck, Star, Truck, DollarSign } from "lucide-react";
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "@/context/LanguageContext"
+
+function getShortTextFromHtml(html, maxLen = 300) {
+    // Универсально для Next.js (можно прямо так)
+    if (typeof window === "undefined") return ""; // SSR guard
+    const div = document.createElement("div");
+    div.innerHTML = html || "";
+    const text = div.textContent || div.innerText || "";
+    return text.trim().slice(0, maxLen) + (text.length > maxLen ? "…" : "");
+}
 
 export default function ProductPage() {
     const params = useParams()
@@ -15,6 +24,7 @@ export default function ProductPage() {
     const [product, setProduct] = useState(null)
     const [selectedImage, setSelectedImage] = useState(0)
     const { lang } = useLanguage()
+
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -53,6 +63,7 @@ export default function ProductPage() {
     const description = product.description?.[lang] || product.description?.en || "<p>No description</p>"
     const seoTitle = product.seo_title?.[lang] || product.seo_title?.en || ""
     const seoDescription = product.seo_description?.[lang] || product.seo_description?.en || ""
+    const shortDescription = getShortTextFromHtml(description, 500)
 
     // Для будущего: категории и другие поля тоже можно делать по языку
 
@@ -107,9 +118,18 @@ export default function ProductPage() {
                                     ? `In stock: ${product.quantity}`
                                     : "Quantity: —"}
                             </div>
-                            <Button className="w-full mb-3" size="lg">
-                                Add to Cart
-                            </Button>
+                            {/* --- ICONS ROW --- */}
+                            <div className="flex flex-row gap-6 mb-4 justify-start items-center">
+                                <ShieldCheck className="w-8 h-8 text-blue-600" title="Official Warranty" />
+                                <BadgeCheck className="w-8 h-8 text-green-600" title="Certified Quality" />
+                                <Star className="w-8 h-8 text-yellow-500" title="Top Seller" />
+                                <Truck className="w-8 h-8 text-gray-600" title="Fast Delivery" />
+                                <DollarSign className="w-8 h-8 text-indigo-600" title="Best Price" />
+                            </div>
+                            {/* --- SHORT DESCRIPTION --- */}
+                            <div className="text-muted-foreground text-base mb-6 max-w-xl">
+                                {shortDescription}
+                            </div>
                         </CardContent>
                     </Card>
                 </div>
