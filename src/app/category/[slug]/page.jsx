@@ -7,9 +7,11 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import SubcategoryFilter from "@/components/sub-category-filter"
+import { useLanguage } from "@/context/LanguageContext"
 
 export default function CategoryPage() {
     const params = useParams()
+    const { lang } = useLanguage();
     const [products, setProducts] = useState([])
     const [category, setCategory] = useState(null)
     const [subcategories, setSubcategories] = useState([])
@@ -20,7 +22,7 @@ export default function CategoryPage() {
         const loadData = async () => {
             try {
                 const categories = await getAllCategories();
-                const matchedCategory = categories.find(cat => cat.slug?.en === slug);
+                const matchedCategory = categories.find(cat => cat.slug?.[lang] === slug || cat.slug?.en === slug);
                 setCategory(matchedCategory);
                 if (!matchedCategory) return;
 
@@ -28,7 +30,7 @@ export default function CategoryPage() {
                 const subcats = categories.filter(cat => cat.parent_id === matchedCategory.id);
                 setSubcategories(subcats);
 
-                // Загрузить все товары (c их категориями)
+                // Загрузить все товары (с их категориями)
                 const allProducts = await getAllProductsWithCategories();
 
                 let filtered;
@@ -50,7 +52,7 @@ export default function CategoryPage() {
         };
 
         loadData();
-    }, [params.slug, selectedSub]);
+    }, [params.slug, selectedSub, lang]); // lang в зависимостях
 
     if (!category) {
         return (
@@ -70,19 +72,19 @@ export default function CategoryPage() {
 
             <div className="flex-1">
                 <h1 className="text-3xl font-bold mb-8">
-                    {category.name?.en || "No Name"}
+                    {category.name?.[lang] || category.name?.en || "No Name"}
                 </h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {products.map((product) => (
-                        <Link key={product.id} href={`/product/${product.slug?.en}`}>
+                        <Link key={product.id} href={`/product/${product.slug?.[lang] || product.slug?.en || product.id}`}>
                             <Card className="hover:shadow-lg transition-shadow">
                                 <img
                                     src={product.main_image_url || "/placeholder.jpg"}
-                                    alt={product.name?.en || "Product image"}
+                                    alt={product.name?.[lang] || product.name?.en || "Product image"}
                                     className="w-full h-48 object-cover rounded-t-xl"
                                 />
                                 <CardContent className="p-4">
-                                    <CardTitle>{product.name?.en || "No Name"}</CardTitle>
+                                    <CardTitle>{product.name?.[lang] || product.name?.en || "No Name"}</CardTitle>
                                     <p className="text-muted-foreground mt-2">
                                         {product.price} €
                                     </p>
