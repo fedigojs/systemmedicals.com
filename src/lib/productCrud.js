@@ -13,13 +13,15 @@ export async function getProductById(id) {
 }
 
 export async function getProductBySlug(slug) {
-    const { data, error } = await supabase
+    // Получаем все продукты (или только слаги, если их много)
+    const { data: products, error } = await supabase
         .from("products")
-        .select("*")
-        .eq("slug->>en", slug)
-        .single()
-    if (error) throw error
-    return data
+        .select("*, slug");
+    if (error) throw error;
+    // Находим товар, у которого хотя бы один slug совпадает
+    return products.find(p =>
+        Object.values(p.slug || {}).includes(slug)
+    );
 }
 
 export async function createProduct(data) {
