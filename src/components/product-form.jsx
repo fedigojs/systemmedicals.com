@@ -11,7 +11,11 @@ import { getAllCategories } from "@/lib/categoryCrud";
 import { slugify } from "@/lib/utils";
 import { supabase } from "@/lib/supabaseClient";
 import {ProductImagesEditor} from "@/components/product-image-editor";
-import RichTextEditor from "@/components/reach-text-editor";
+import dynamic from 'next/dynamic';
+
+const RichTextEditor = dynamic(() => import('@/components/reach-text-editor'), {
+    ssr: false,
+});
 
 const langs = ["en", "pl", "fr", "ua", "it"];
 const LANG_LABELS = { en: "English", pl: "Polski", fr: "Français", ua: "Українська", it: "Italiano" };

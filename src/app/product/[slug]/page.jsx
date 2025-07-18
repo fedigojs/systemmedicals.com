@@ -108,9 +108,10 @@ export default function ProductPage() {
             <Separator className="my-8" />
             <div className="max-w-5xl mx-auto">
                 <h2 className="text-xl font-semibold mb-3">Product Description</h2>
-                <div className="text-muted-foreground leading-relaxed text-lg whitespace-pre-line">
-                    {product.description?.en || "No description"}
-                </div>
+                <div
+                    className="text-muted-foreground leading-relaxed text-lg"
+                    dangerouslySetInnerHTML={{ __html: product.description?.en || "<p>No description</p>" }}
+                />
             </div>
         </div>
     )
