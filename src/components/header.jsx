@@ -4,14 +4,21 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/LanguageContext";
 import { Globe } from "lucide-react";
-import {useEffect, useRef, useState} from "react"; // или любая другая иконка
+import {useEffect, useRef, useState} from "react";
 
 const LANG_LABELS = {
-    en: "EN", pl: "PL", fr: "FR", ua: "UA", it: "IT"
+    en: "EN", pl: "PL", fr: "FR", ua: "UA", it: "IT",  de: "De",
+    es: "Es"
 };
 
-const FLAG_EMOJIS = {
-    en: "🇬🇧", pl: "🇵🇱", fr: "🇫🇷", ua: "🇺🇦", it: "🇮🇹"
+export const FLAG_EMOJIS = {
+    en: "🇬🇧",
+    pl: "🇵🇱",
+    fr: "🇫🇷",
+    ua: "🇺🇦",
+    it: "🇮🇹",
+    de: "🇩🇪",
+    es: "🇪🇸"
 };
 
 const WORK_HOURS = "Mon-Fri: 09:00–18:00";
