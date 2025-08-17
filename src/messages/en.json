@@ -1,4 +1,18 @@
 {
+  "header": {
+    "home": "Home",
+    "contact": "Contact"
+  },
+  "footer": {
+    "quality_medical_equipment_for_professional": "Quality medical equipment for professionals.",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "explore": "Explore",
+    "legal": "Legal",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service"
+  },
   "main": {
     "dental_equipment": "Dental Equipment",
     "catalog_of_medical_equipment": "Catalog of medical equipment at great prices",

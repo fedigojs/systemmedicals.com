@@ -1,1 +1,21 @@
-{}
+{
+  "header": { "home": "Strona główna", "contact": "Kontakt" },
+  "footer": {
+    "quality_medical_equipment_for_professional": "Wysokiej jakości sprzęt medyczny dla profesjonalistów.",
+    "home": "Strona główna",
+    "about": "O nas",
+    "contact": "Kontakt",
+    "explore": "Przeglądaj",
+    "legal": "Informacje prawne",
+    "privacy_policy": "Polityka prywatności",
+    "terms_of_service": "Regulamin"
+  },
+  "main": {
+    "dental_equipment": "Sprzęt stomatologiczny",
+    "catalog_of_medical_equipment": "Katalog sprzętu medycznego w świetnych cenach",
+    "medical_equipment": "Sprzęt medyczny"
+  },
+  "button": { "view": "Zobacz" },
+  "featured": { "no_featured_product_yet": "Brak wyróżnionych produktów" },
+  "product": { "product_description": "Opis produktu" }
+}

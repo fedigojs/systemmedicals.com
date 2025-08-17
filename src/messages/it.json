@@ -1,1 +1,21 @@
-{}
+{
+  "header": { "home": "Home", "contact": "Contatti" },
+  "footer": {
+    "quality_medical_equipment_for_professional": "Attrezzature mediche di qualità per professionisti.",
+    "home": "Home",
+    "about": "Chi siamo",
+    "contact": "Contatti",
+    "explore": "Esplora",
+    "legal": "Note legali",
+    "privacy_policy": "Informativa sulla privacy",
+    "terms_of_service": "Termini di servizio"
+  },
+  "main": {
+    "dental_equipment": "Attrezzature dentali",
+    "catalog_of_medical_equipment": "Catalogo di attrezzature mediche a prezzi vantaggiosi",
+    "medical_equipment": "Attrezzature mediche"
+  },
+  "button": { "view": "Visualizza" },
+  "featured": { "no_featured_product_yet": "Nessun prodotto in evidenza al momento" },
+  "product": { "product_description": "Descrizione del prodotto" }
+}

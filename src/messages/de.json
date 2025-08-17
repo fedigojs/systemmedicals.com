@@ -1,3 +1,21 @@
 {
-
+  "header": { "home": "Startseite", "contact": "Kontakt" },
+  "footer": {
+    "quality_medical_equipment_for_professional": "Hochwertige medizinische Geräte für Profis.",
+    "home": "Startseite",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "explore": "Entdecken",
+    "legal": "Rechtliches",
+    "privacy_policy": "Datenschutzrichtlinie",
+    "terms_of_service": "Nutzungsbedingungen"
+  },
+  "main": {
+    "dental_equipment": "Zahnmedizinische Ausrüstung",
+    "catalog_of_medical_equipment": "Katalog medizinischer Geräte zu günstigen Preisen",
+    "medical_equipment": "Medizinische Ausrüstung"
+  },
+  "button": { "view": "Ansehen" },
+  "featured": { "no_featured_product_yet": "Noch keine hervorgehobenen Produkte" },
+  "product": { "product_description": "Produktbeschreibung" }
 }

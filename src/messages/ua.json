@@ -1,1 +1,21 @@
-{}
+{
+  "header": { "home": "Головна", "contact": "Контакти" },
+  "footer": {
+    "quality_medical_equipment_for_professional": "Якісне медичне обладнання для професіоналів.",
+    "home": "Головна",
+    "about": "Про нас",
+    "contact": "Контакти",
+    "explore": "Досліджуйте",
+    "legal": "Правова інформація",
+    "privacy_policy": "Політика конфіденційності",
+    "terms_of_service": "Умови користування"
+  },
+  "main": {
+    "dental_equipment": "Стоматологічне обладнання",
+    "catalog_of_medical_equipment": "Каталог медичного обладнання за чудовими цінами",
+    "medical_equipment": "Медичне обладнання"
+  },
+  "button": { "view": "Переглянути" },
+  "featured": { "no_featured_product_yet": "Ще немає рекомендованих товарів" },
+  "product": { "product_description": "Опис товару" }
+}

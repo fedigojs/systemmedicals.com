@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/LanguageContext";
 import { Globe } from "lucide-react";
 import {useEffect, useRef, useState} from "react";
+import {useTranslations} from 'next-intl';
 
 const LANG_LABELS = {
     en: "EN", pl: "PL", fr: "FR", ua: "UA", it: "IT",  de: "De",
@@ -25,6 +26,7 @@ const WORK_HOURS = "Mon-Fri: 09:00–18:00";
 const PHONE = "+38 (044) 123-45-67";
 
 export default function Header() {
+    const t = useTranslations();
     const { lang, setLang, langs } = useLanguage();
     const [open, setOpen] = useState(false);
     const langButtonRef = useRef(null);
@@ -74,10 +76,10 @@ export default function Header() {
                     {/* Navigation */}
                     <nav className="hidden md:flex items-center space-x-6">
                         <Link href="/" className="text-gray-700 hover:text-blue-600 transition">
-                            Home
+                            {t("header.home")}
                         </Link>
                         <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition">
-                            Contact
+                            {t("header.contact")}
                         </Link>
                     </nav>
 

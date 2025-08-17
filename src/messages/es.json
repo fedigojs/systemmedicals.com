@@ -1,1 +1,21 @@
-{}
+{
+  "header": { "home": "Inicio", "contact": "Contacto" },
+  "footer": {
+    "quality_medical_equipment_for_professional": "Equipos médicos de calidad para profesionales.",
+    "home": "Inicio",
+    "about": "Sobre nosotros",
+    "contact": "Contacto",
+    "explore": "Explorar",
+    "legal": "Aviso legal",
+    "privacy_policy": "Política de privacidad",
+    "terms_of_service": "Términos del servicio"
+  },
+  "main": {
+    "dental_equipment": "Equipos dentales",
+    "catalog_of_medical_equipment": "Catálogo de equipos médicos a excelentes precios",
+    "medical_equipment": "Equipos médicos"
+  },
+  "button": { "view": "Ver" },
+  "featured": { "no_featured_product_yet": "Aún no hay productos destacados" },
+  "product": { "product_description": "Descripción del producto" }
+}
