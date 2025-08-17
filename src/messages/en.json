@@ -26,5 +26,9 @@
   },
   "product": {
     "product_description": "Product Description"
+  },
+  "category": {
+    "subcategories": "Subcategories",
+    "all_products": "All products"
   }
 }

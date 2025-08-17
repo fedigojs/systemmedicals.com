@@ -17,5 +17,9 @@
   },
   "button": { "view": "Переглянути" },
   "featured": { "no_featured_product_yet": "Ще немає рекомендованих товарів" },
-  "product": { "product_description": "Опис товару" }
+  "product": { "product_description": "Опис товару" },
+  "category": {
+    "subcategories": "Підкатегорії",
+    "all_products": "Усі товари"
+  }
 }

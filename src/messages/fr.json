@@ -17,5 +17,9 @@
   },
   "button": { "view": "Voir" },
   "featured": { "no_featured_product_yet": "Aucun produit mis en avant pour le moment" },
-  "product": { "product_description": "Description du produit" }
+  "product": { "product_description": "Description du produit" },
+  "category": {
+    "subcategories": "Sous-catégories",
+    "all_products": "Tous les produits"
+  }
 }
