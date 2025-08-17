@@ -2,9 +2,11 @@
 import { useEffect, useState } from "react";
 import { getAllProducts } from "@/lib/productCrud";
 import Link from "next/link";
-import { useLanguage } from "@/context/LanguageContext"; // Импортируем хук!
+import { useLanguage } from "@/context/LanguageContext";
+import {useTranslations} from 'next-intl';
 
 export default function FeaturedProductsGrid() {
+    const t = useTranslations();
     const [products, setProducts] = useState([]);
     const { lang } = useLanguage(); // <-- вызывать ХУК здесь!
 
@@ -18,7 +20,7 @@ export default function FeaturedProductsGrid() {
     }, []);
 
     if (products.length === 0) {
-        return <div className="text-muted-foreground text-center">No featured products yet.</div>
+        return <div className="text-muted-foreground text-center">{t("featured.no_featured_product_yet")}</div>
     }
 
     return (
@@ -38,7 +40,7 @@ export default function FeaturedProductsGrid() {
                         <div className="font-bold text-lg mb-1">{product.name?.[lang] || product.name?.en || "No name"}</div>
                         <div className="text-muted-foreground mb-2">{product.price} €</div>
                         <button className="mt-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-                            View
+                            {t("button.view")}
                         </button>
                     </div>
                 </Link>

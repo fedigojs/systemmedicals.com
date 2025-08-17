@@ -1,1 +1,16 @@
-{}
+{
+  "main": {
+    "dental_equipment": "Dental Equipment",
+    "catalog_of_medical_equipment": "Catalog of medical equipment at great prices",
+    "medical_equipment": "Medical Equipment"
+  },
+  "button": {
+    "view": "View"
+  },
+  "featured": {
+    "no_featured_product_yet": "No featured products yet"
+  },
+  "product": {
+    "product_description": "Product Description"
+  }
+}

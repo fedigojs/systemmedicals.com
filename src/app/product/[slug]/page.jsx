@@ -8,6 +8,7 @@ import { BadgeCheck, ShieldCheck, Star, Truck, DollarSign } from "lucide-react";
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "@/context/LanguageContext"
+import {useTranslations} from 'next-intl';
 
 function getShortTextFromHtml(html, maxLen = 300) {
     // Универсально для Next.js (можно прямо так)
@@ -19,6 +20,7 @@ function getShortTextFromHtml(html, maxLen = 300) {
 }
 
 export default function ProductPage() {
+    const t = useTranslations();
     const params = useParams()
     const productSlug = params.slug
     const [product, setProduct] = useState(null)
@@ -135,12 +137,10 @@ export default function ProductPage() {
                 </div>
             </div>
 
-            {/* ОПИСАНИЕ */}
             <Separator className="my-8" />
             <div className="max-w-5xl mx-auto">
                 <h2 className="text-xl font-semibold mb-3">
-                    {/* Можно тут тоже сделать мультиязычный заголовок, если нужно */}
-                    Product Description
+                    {t("product.product_description")}
                 </h2>
                 <div
                     className="text-muted-foreground leading-relaxed text-lg"
