@@ -3,18 +3,14 @@
     {
       "source": "/(.*)",
       "destination": "https://systemmedicals.com/$1",
-      "permanent": false,
-      "has": [
-        { "type": "host", "value": ".*vercel\\.app" }
-      ]
+      "permanent": true,
+      "has": [{ "type": "host", "value": "www.systemmedicals.com" }]
     },
     {
       "source": "/(.*)",
       "destination": "https://systemmedicals.com/$1",
       "permanent": true,
-      "has": [
-        { "type": "host", "value": "www.systemmedicals.com" }
-      ]
+      "has": [{ "type": "host", "value": ".*vercel\\.app" }]
     }
   ]
 }
