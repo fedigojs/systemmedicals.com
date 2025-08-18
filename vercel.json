@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/(.*)", "destination": "https://systemmedicals.com/$1", "permanent": false, "has": [{ "type": "host", "value": ".*vercel\.app" }] },
+    { "source": "https://www.systemmedicals.com/(.*)", "destination": "https://systemmedicals.com/$1", "permanent": true }
+  ]
+}
