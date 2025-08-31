@@ -1,5 +1,5 @@
 {
-  "header": { "home": "Inicio", "contact": "Contacto" },
+  "header": { "home": "Inicio", "contact": "Contacto", "about": "Sobre nosotros" },
   "footer": {
     "quality_medical_equipment_for_professional": "Equipos médicos de calidad para profesionales.",
     "home": "Inicio",
@@ -11,15 +11,20 @@
     "terms_of_service": "Términos del servicio"
   },
   "main": {
-    "dental_equipment": "Equipos dentales",
+    "dental_equipment": "Equipo dental",
     "catalog_of_medical_equipment": "Catálogo de equipos médicos a excelentes precios",
     "medical_equipment": "Equipos médicos"
   },
   "button": { "view": "Ver" },
   "featured": { "no_featured_product_yet": "Aún no hay productos destacados" },
   "product": { "product_description": "Descripción del producto" },
-  "category": {
-    "subcategories": "Subcategorías",
-    "all_products": "Todos los productos"
+  "category": { "subcategories": "Subcategorías", "all_products": "Todos los productos" },
+  "contacts": {
+    "contacts": "Contacto",
+    "for_inquiries_contact_us_at": "Para consultas, contáctanos en:",
+    "work_hours": "Horario de atención",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "address": "Dirección"
   }
 }

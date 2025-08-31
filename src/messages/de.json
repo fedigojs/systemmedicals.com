@@ -1,25 +1,30 @@
 {
-  "header": { "home": "Startseite", "contact": "Kontakt" },
+  "header": { "home": "Startseite", "contact": "Kontakt", "about": "Über uns" },
   "footer": {
-    "quality_medical_equipment_for_professional": "Hochwertige medizinische Geräte für Profis.",
+    "quality_medical_equipment_for_professional": "Hochwertige Medizingeräte für Fachleute.",
     "home": "Startseite",
     "about": "Über uns",
     "contact": "Kontakt",
     "explore": "Entdecken",
     "legal": "Rechtliches",
-    "privacy_policy": "Datenschutzrichtlinie",
+    "privacy_policy": "Datenschutzerklärung",
     "terms_of_service": "Nutzungsbedingungen"
   },
   "main": {
-    "dental_equipment": "Zahnmedizinische Ausrüstung",
-    "catalog_of_medical_equipment": "Katalog medizinischer Geräte zu günstigen Preisen",
-    "medical_equipment": "Medizinische Ausrüstung"
+    "dental_equipment": "Zahnmedizinische Geräte",
+    "catalog_of_medical_equipment": "Katalog medizinischer Geräte zu attraktiven Preisen",
+    "medical_equipment": "Medizinische Geräte"
   },
   "button": { "view": "Ansehen" },
   "featured": { "no_featured_product_yet": "Noch keine hervorgehobenen Produkte" },
   "product": { "product_description": "Produktbeschreibung" },
-  "category": {
-  "subcategories": "Unterkategorien",
-  "all_products": "Alle Produkte"
-}
+  "category": { "subcategories": "Unterkategorien", "all_products": "Alle Produkte" },
+  "contacts": {
+    "contacts": "Kontakt",
+    "for_inquiries_contact_us_at": "Für Anfragen kontaktieren Sie uns unter:",
+    "work_hours": "Öffnungszeiten",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "address": "Adresse"
+  }
 }

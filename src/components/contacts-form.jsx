@@ -13,6 +13,7 @@ export default function ContactsForm() {
         email: "",
         phone: "",
         address: "",
+        work_time: "",
         map_embed_url: "",
     });
     const [loading, setLoading] = useState(true);
@@ -35,6 +36,7 @@ export default function ContactsForm() {
                         email: data[0].email ?? "",
                         phone: data[0].phone ?? "",
                         address: data[0].address ?? "",
+                        work_time: data[0].work_time ?? "",
                         map_embed_url: data[0].map_embed_url ?? "",
                     });
                 }
@@ -49,10 +51,11 @@ export default function ContactsForm() {
         setSaving(true);
 
         const payload = {
-            id: form.id || undefined,         // insert if null
+            id: form.id || undefined,
             email: form.email || null,
             phone: form.phone || null,
             address: form.address || null,
+            work_time: form.work_time || null,
             map_embed_url: form.map_embed_url || null,
         };
 
@@ -84,7 +87,18 @@ export default function ContactsForm() {
         <form onSubmit={handleSubmit} className="grid gap-8 md:grid-cols-2">
             {/* Left: fields */}
             <div className="space-y-8">
+                <div className="space-y-2">
+                    <Label htmlFor="work_time">Work time</Label>
+                    <Input
+                        id="work_time"
+                        type="text"
+                        placeholder="221B Baker Street, London"
+                        value={form.work_time}
+                        onChange={(e) => setForm({ ...form, work_time: e.target.value })}
+                    />
+                </div>
                 <div className="grid gap-6 sm:grid-cols-2">
+
                     <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
                         <Input

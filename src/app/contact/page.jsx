@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { fetchContacts } from "@/lib/contacts";
+import {useTranslations} from "next-intl";
 
 export default function ContactsPage() {
+    const t = useTranslations();
     const [contacts, setContacts] = useState(null);
     const [error, setError] = useState(null);
 
@@ -36,18 +38,19 @@ export default function ContactsPage() {
         <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10">
             {/* Left */}
             <div>
-                <h1 className="text-3xl font-bold mb-8">Contacts</h1>
+                <h1 className="text-3xl font-bold mb-8">{t('contacts.contacts')}</h1>
                 <p className="text-lg text-muted-foreground mb-4">
-                    For inquiries, please contact us at:
+                    {t('contacts.for_inquiries_contact_us_at')}:
                 </p>
                 <ul className="list-disc pl-5 space-y-2">
+                    <li>{t('contacts.work_hours')}: {contacts.work_time || "—"}</li>
                     <li>
-                        Email: {contacts.email ? <a className="underline" href={`mailto:${contacts.email}`}>{contacts.email}</a> : "—"}
+                        {t('contacts.email')}: {contacts.email ? <a className="underline" href={`mailto:${contacts.email}`}>{contacts.email}</a> : "—"}
                     </li>
                     <li>
-                        Phone: {contacts.phone ? <a className="underline" href={`tel:${contacts.phone}`}>{contacts.phone}</a> : "—"}
+                        {t('contacts.phone')}: {contacts.phone ? <a className="underline" href={`tel:${contacts.phone}`}>{contacts.phone}</a> : "—"}
                     </li>
-                    <li>Address: {contacts.address || "—"}</li>
+                    <li>{t('contacts.address')}: {contacts.address || "—"}</li>
                 </ul>
             </div>
 

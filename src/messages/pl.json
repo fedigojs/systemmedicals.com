@@ -1,5 +1,5 @@
 {
-  "header": { "home": "Strona główna", "contact": "Kontakt" },
+  "header": { "home": "Strona główna", "contact": "Kontakt", "about": "O nas" },
   "footer": {
     "quality_medical_equipment_for_professional": "Wysokiej jakości sprzęt medyczny dla profesjonalistów.",
     "home": "Strona główna",
@@ -18,8 +18,13 @@
   "button": { "view": "Zobacz" },
   "featured": { "no_featured_product_yet": "Brak wyróżnionych produktów" },
   "product": { "product_description": "Opis produktu" },
-  "category": {
-    "subcategories": "Podkategorie",
-    "all_products": "Wszystkie produkty"
+  "category": { "subcategories": "Podkategorie", "all_products": "Wszystkie produkty" },
+  "contacts": {
+    "contacts": "Kontakt",
+    "for_inquiries_contact_us_at": "W sprawie zapytań prosimy o kontakt:",
+    "work_hours": "Godziny pracy",
+    "email": "Email",
+    "phone": "Telefon",
+    "address": "Adres"
   }
 }

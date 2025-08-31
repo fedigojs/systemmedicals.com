@@ -1,13 +1,14 @@
 {
   "header": {
     "home": "Home",
-    "contact": "Contact"
+    "contact": "Contacts",
+    "about": "About Us"
   },
   "footer": {
     "quality_medical_equipment_for_professional": "Quality medical equipment for professionals.",
     "home": "Home",
-    "about": "About",
-    "contact": "Contact",
+    "about": "About Us",
+    "contact": "Contacts",
     "explore": "Explore",
     "legal": "Legal",
     "privacy_policy": "Privacy Policy",
@@ -30,5 +31,13 @@
   "category": {
     "subcategories": "Subcategories",
     "all_products": "All products"
+  },
+  "contacts": {
+    "contacts": "Contacts",
+    "for_inquiries_contact_us_at": "For inquiries, please contact us at",
+    "work_hours": "Work Hours",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address"
   }
 }

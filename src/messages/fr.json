@@ -1,25 +1,30 @@
 {
-  "header": { "home": "Accueil", "contact": "Contact" },
+  "header": { "home": "Accueil", "contact": "Contacts", "about": "À propos" },
   "footer": {
-    "quality_medical_equipment_for_professional": "Du matériel médical de qualité pour les professionnels.",
+    "quality_medical_equipment_for_professional": "Équipements médicaux de qualité pour les professionnels.",
     "home": "Accueil",
     "about": "À propos",
-    "contact": "Contact",
+    "contact": "Contacts",
     "explore": "Découvrir",
     "legal": "Mentions légales",
     "privacy_policy": "Politique de confidentialité",
-    "terms_of_service": "Conditions d’utilisation"
+    "terms_of_service": "Conditions d'utilisation"
   },
   "main": {
     "dental_equipment": "Équipement dentaire",
-    "catalog_of_medical_equipment": "Catalogue de matériel médical à des prix avantageux",
+    "catalog_of_medical_equipment": "Catalogue d’équipements médicaux à des prix avantageux",
     "medical_equipment": "Équipement médical"
   },
   "button": { "view": "Voir" },
   "featured": { "no_featured_product_yet": "Aucun produit mis en avant pour le moment" },
   "product": { "product_description": "Description du produit" },
-  "category": {
-    "subcategories": "Sous-catégories",
-    "all_products": "Tous les produits"
+  "category": { "subcategories": "Sous-catégories", "all_products": "Tous les produits" },
+  "contacts": {
+    "contacts": "Contacts",
+    "for_inquiries_contact_us_at": "Pour toute demande, contactez-nous à :",
+    "work_hours": "Heures d’ouverture",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "address": "Adresse"
   }
 }

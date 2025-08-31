@@ -1,25 +1,30 @@
 {
-  "header": { "home": "Головна", "contact": "Контакти" },
+  "header": { "home": "Головна", "contact": "Контакти", "about": "Про нас" },
   "footer": {
     "quality_medical_equipment_for_professional": "Якісне медичне обладнання для професіоналів.",
     "home": "Головна",
     "about": "Про нас",
     "contact": "Контакти",
-    "explore": "Досліджуйте",
+    "explore": "Дослідити",
     "legal": "Правова інформація",
     "privacy_policy": "Політика конфіденційності",
     "terms_of_service": "Умови користування"
   },
   "main": {
     "dental_equipment": "Стоматологічне обладнання",
-    "catalog_of_medical_equipment": "Каталог медичного обладнання за чудовими цінами",
+    "catalog_of_medical_equipment": "Каталог медичного обладнання за вигідними цінами",
     "medical_equipment": "Медичне обладнання"
   },
   "button": { "view": "Переглянути" },
-  "featured": { "no_featured_product_yet": "Ще немає рекомендованих товарів" },
+  "featured": { "no_featured_product_yet": "Ще немає вибраних товарів" },
   "product": { "product_description": "Опис товару" },
-  "category": {
-    "subcategories": "Підкатегорії",
-    "all_products": "Усі товари"
+  "category": { "subcategories": "Підкатегорії", "all_products": "Усі товари" },
+  "contacts": {
+    "contacts": "Контакти",
+    "for_inquiries_contact_us_at": "З питань звертайтесь за адресою",
+    "work_hours": "Години роботи",
+    "email": "Електронна пошта",
+    "phone": "Телефон",
+    "address": "Адреса"
   }
 }
