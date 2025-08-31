@@ -37,7 +37,7 @@ const data = {
                 },
                 {
                     title: "About Us",
-                    url: "/admin/about-us",
+                    url: "/admin/about",
                 }
             ],
         },
