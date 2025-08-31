@@ -35,6 +35,7 @@ export default function ProductForm({id}) {
     const queryClient = useQueryClient();
     const [images, setImages] = useState([]);
     const [name, setName] = useState(emptyJsonb());
+    const [short_description, setShortDescription] = useState(emptyJsonb());
     const [description, setDescription] = useState(emptyJsonb());
     const [slug, setSlug] = useState(emptyJsonb());
     const [seoTitle, setSeoTitle] = useState(emptyJsonb());
@@ -58,6 +59,7 @@ export default function ProductForm({id}) {
             Promise.all([getProductById(id), getProductWithCategories(id)])
                 .then(([product, categoriesIds]) => {
                     setName(product.name || emptyJsonb());
+                    setShortDescription(product.short_description || emptyJsonb());
                     setDescription(product.description || emptyJsonb());
                     setSlug(product.slug || emptyJsonb());
                     setSeoTitle(product.seo_title || emptyJsonb());
@@ -124,6 +126,7 @@ export default function ProductForm({id}) {
         }
         mutation.mutate({
             name,
+            short_description,
             description,
             slug,
             seo_title: seoTitle,
@@ -141,83 +144,88 @@ export default function ProductForm({id}) {
     }
 
     return (<div className="w-full max-w-6xl mx-auto p-8">
-            <h1 className="text-2xl font-bold mb-4">{id ? "Edit Product" : "Create Product"}</h1>
-            <form className="space-y-4" onSubmit={handleSubmit}>
-                <div>
-                    <div className="flex gap-2 mb-2">
-                        {langs.map(lng => (<button key={lng} type="button"
-                                                   className={`px-3 py-1 rounded ${activeLang === lng ? "bg-gray-800 text-white" : "bg-gray-200"}`}
-                                                   onClick={() => setActiveLang(lng)}
-                            >{LANG_LABELS[lng]}</button>))}
-                    </div>
-                    <label className="font-medium">Name ({LANG_LABELS[activeLang]})</label>
-                    <Input value={name[activeLang]} onChange={e => setName({...name, [activeLang]: e.target.value})}
-                           required/>
+        <h1 className="text-2xl font-bold mb-4">{id ? "Edit Product" : "Create Product"}</h1>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+            <div>
+                <div className="flex gap-2 mb-2">
+                    {langs.map(lng => (<button key={lng} type="button"
+                                               className={`px-3 py-1 rounded ${activeLang === lng ? "bg-gray-800 text-white" : "bg-gray-200"}`}
+                                               onClick={() => setActiveLang(lng)}
+                    >{LANG_LABELS[lng]}</button>))}
                 </div>
-                <div>
-                    <label className="font-medium">Description ({LANG_LABELS[activeLang]})</label>
-                    <RichTextEditor
-                        value={description[activeLang]}
-                        onChange={(val) => setDescription({...description, [activeLang]: val})}
-                        langKey={activeLang}
-                    />
+                <label className="font-medium">Name ({LANG_LABELS[activeLang]})</label>
+                <Input value={name[activeLang]} onChange={e => setName({...name, [activeLang]: e.target.value})}
+                       required/>
+            </div>
+            <div>
+                <label className="font-medium">Short Description ({LANG_LABELS[activeLang]})</label>
+                <Textarea value={short_description[activeLang]}
+                       onChange={e => setShortDescription({...short_description, [activeLang]: e.target.value})}/>
+            </div>
+            <div>
+                <label className="font-medium">Description ({LANG_LABELS[activeLang]})</label>
+                <RichTextEditor
+                    value={description[activeLang]}
+                    onChange={(val) => setDescription({...description, [activeLang]: val})}
+                    langKey={activeLang}
+                />
+            </div>
+            <div>
+                <label className="font-medium">Slug ({LANG_LABELS[activeLang]})</label>
+                <Input value={slug[activeLang]}
+                       onChange={e => setSlug({...slug, [activeLang]: slugify(e.target.value)})}/>
+            </div>
+            <div>
+                <label className="font-medium">SEO Title ({LANG_LABELS[activeLang]})</label>
+                <Input value={seoTitle[activeLang]}
+                       onChange={e => setSeoTitle({...seoTitle, [activeLang]: e.target.value})}/>
+            </div>
+            <div>
+                <label className="font-medium">SEO Description ({LANG_LABELS[activeLang]})</label>
+                <Textarea value={seoDescription[activeLang]}
+                          onChange={e => setSeoDescription({...seoDescription, [activeLang]: e.target.value})}/>
+            </div>
+            <div>
+                <label className="font-medium">SEO Keywords ({LANG_LABELS[activeLang]})</label>
+                <Input value={seoKeywords[activeLang]}
+                       onChange={e => setSeoKeywords({...seoKeywords, [activeLang]: e.target.value})}/>
+            </div>
+            <div className="flex gap-4">
+                <div className="flex-1">
+                    <label className="font-medium">Price</label>
+                    <Input type="string" value={price} onChange={e => setPrice(Number(e.target.value) || 0)}/>
                 </div>
-                <div>
-                    <label className="font-medium">Slug ({LANG_LABELS[activeLang]})</label>
-                    <Input value={slug[activeLang]}
-                           onChange={e => setSlug({...slug, [activeLang]: slugify(e.target.value)})}/>
+                <div className="flex-1">
+                    <label className="font-medium">Quantity</label>
+                    <Input type="string" value={quantity} onChange={e => setQuantity(Number(e.target.value) || 0)}/>
                 </div>
-                <div>
-                    <label className="font-medium">SEO Title ({LANG_LABELS[activeLang]})</label>
-                    <Input value={seoTitle[activeLang]}
-                           onChange={e => setSeoTitle({...seoTitle, [activeLang]: e.target.value})}/>
-                </div>
-                <div>
-                    <label className="font-medium">SEO Description ({LANG_LABELS[activeLang]})</label>
-                    <Textarea value={seoDescription[activeLang]}
-                              onChange={e => setSeoDescription({...seoDescription, [activeLang]: e.target.value})}/>
-                </div>
-                <div>
-                    <label className="font-medium">SEO Keywords ({LANG_LABELS[activeLang]})</label>
-                    <Input value={seoKeywords[activeLang]}
-                           onChange={e => setSeoKeywords({...seoKeywords, [activeLang]: e.target.value})}/>
-                </div>
-                <div className="flex gap-4">
-                    <div className="flex-1">
-                        <label className="font-medium">Price</label>
-                        <Input type="string" value={price} onChange={e => setPrice(Number(e.target.value) || 0)}/>
-                    </div>
-                    <div className="flex-1">
-                        <label className="font-medium">Quantity</label>
-                        <Input type="string" value={quantity} onChange={e => setQuantity(Number(e.target.value) || 0)}/>
-                    </div>
-                </div>
-                <div>
-                    <label className="font-medium">Category</label>
-                    <MultiSelect
-                        options={categories.map(cat => ({
-                            label: cat.name?.en || "No name", value: cat.id
-                        }))}
-                        value={categoryIds}
-                        onChange={setCategoryIds}
-                        placeholder="Select categories..."
-                    />
-                </div>
-                <div>
-                    <label className="font-medium">Product Images</label>
-                    <ProductImagesEditor images={images} onChange={setImages}/>
-                </div>
-                <div className="flex items-center gap-2">
-                    <label className="font-medium">Show on Main Page</label>
-                    <Switch checked={isFeatured} onCheckedChange={setIsFeatured}/>
-                </div>
-                <div className="flex items-center gap-2">
-                    <label className="font-medium">Active</label>
-                    <Switch checked={isActive} onCheckedChange={setIsActive}/>
-                </div>
-                <Button type="submit" disabled={loading || mutation.isPending} className="mt-2">
-                    {loading || mutation.isPending ? "Saving..." : (id ? "Save" : "Create Product")}
-                </Button>
-            </form>
-        </div>);
+            </div>
+            <div>
+                <label className="font-medium">Category</label>
+                <MultiSelect
+                    options={categories.map(cat => ({
+                        label: cat.name?.en || "No name", value: cat.id
+                    }))}
+                    value={categoryIds}
+                    onChange={setCategoryIds}
+                    placeholder="Select categories..."
+                />
+            </div>
+            <div>
+                <label className="font-medium">Product Images</label>
+                <ProductImagesEditor images={images} onChange={setImages}/>
+            </div>
+            <div className="flex items-center gap-2">
+                <label className="font-medium">Show on Main Page</label>
+                <Switch checked={isFeatured} onCheckedChange={setIsFeatured}/>
+            </div>
+            <div className="flex items-center gap-2">
+                <label className="font-medium">Active</label>
+                <Switch checked={isActive} onCheckedChange={setIsActive}/>
+            </div>
+            <Button type="submit" disabled={loading || mutation.isPending} className="mt-2">
+                {loading || mutation.isPending ? "Saving..." : (id ? "Save" : "Create Product")}
+            </Button>
+        </form>
+    </div>);
 }

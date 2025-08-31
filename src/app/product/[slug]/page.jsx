@@ -62,10 +62,11 @@ export default function ProductPage() {
 
     // ---- Мультиязычные поля ----
     const name = product.name?.[lang] || product.name?.en || "No Name"
+    const short_description = product.short_description?.[lang] || product.short_description?.en || "No Description"
     const description = product.description?.[lang] || product.description?.en || "<p>No description</p>"
     const seoTitle = product.seo_title?.[lang] || product.seo_title?.en || ""
     const seoDescription = product.seo_description?.[lang] || product.seo_description?.en || ""
-    const shortDescription = getShortTextFromHtml(description, 500)
+    const shortDescription = getShortTextFromHtml(short_description, 650)
 
     // Для будущего: категории и другие поля тоже можно делать по языку
 
